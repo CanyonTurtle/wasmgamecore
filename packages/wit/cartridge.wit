@@ -1,0 +1,13 @@
+package wasmgamecore:console;
+
+interface game {
+  /// Called once per frame.
+  update: func();
+}
+
+world cartridge {
+  import screen;
+  import input;
+
+  export game;
+}

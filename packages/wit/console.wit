@@ -1,0 +1,28 @@
+package wasmgamecore:console;
+
+interface screen {
+  /// Draw a pixel at (x, y) with the given color.
+  drawpixel: func(x: u32, y: u32, color: u32);
+
+  /// Draw a rectangle at the top-left corner (x, y) with the given width, height, and color.
+  drawrectangle: func(x: u32, y: u32, width: u32, height: u32, color: u32);
+
+  /// Draw a line from (x1, y1) to (x2, y2) with the given color.
+  drawline: func(x1: u32, y1: u32, x2: u32, y2: u32, color: u32);
+
+  /// Draw a sprite from a sprite sheet at (x, y). Takes the sprite sheet handle and source coordinates.
+  drawsprite: func(x: u32, y: u32, spritesheethandle: u32, srcx: u32, srcy: u32, srcwidth: u32, srcheight: u32);
+}
+
+interface input {
+  /// Polls the state of the D-pad.
+  polldpad: func() -> (up: bool, down: bool, left: bool, right: bool);
+
+  /// Polls the state of the buttons (A, B, C, D).
+  pollbuttons: func() -> (a: bool, b: bool, c: bool, d: bool);
+}
+
+world console {
+  export screen;
+  export input;
+}
